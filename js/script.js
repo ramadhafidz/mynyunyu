@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const justTheWayYouAre = document.getElementById('justTheWayYouAre');
-  const keepItTogether = document.getElementById('keepItTogether');
+const justTheWayYouAre = document.getElementById('justTheWayYouAre');
+const keepItTogether = document.getElementById('keepItTogether');
 
-  justTheWayYouAre.play().catch((error) => {
-    console.log('Autoplay was prevented. Click anywhere to play the audio.');
-    document.body.addEventListener('click', () => {
-      justTheWayYouAre.play();
-    }, { once: true });
+function start () {
+  let splash = document.getElementById("splash");
+
+  splash.addEventListener("transitionend", () => {
+    justTheWayYouAre.play();
+    splash.remove();
   });
 
   justTheWayYouAre.addEventListener('ended', () => {
@@ -16,4 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   keepItTogether.addEventListener('ended', () => {
     justTheWayYouAre.play();
   });
-});
+
+  splash.classList.add("hide");
+}

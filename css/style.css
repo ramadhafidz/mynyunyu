@@ -1,3 +1,33 @@
+#splash {
+  /* Fullscreen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+
+  /* Center */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Cosmetics */
+  font-size: 24px;
+  color: #fff;
+  background: #000;
+}
+
+#splash:hover {
+  cursor: pointer;
+}
+
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s;
+}
+
 body {
   font-family: "Zeyada", cursive;
   font-weight: 400;
