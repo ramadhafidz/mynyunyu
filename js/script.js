@@ -1,10 +1,19 @@
-const justTheWayYouAre = document.getElementById('justTheWayYouAre');
-const keepItTogether = document.getElementById('keepItTogether');
+document.addEventListener('DOMContentLoaded', () => {
+  const justTheWayYouAre = document.getElementById('justTheWayYouAre');
+  const keepItTogether = document.getElementById('keepItTogether');
 
-justTheWayYouAre.addEventListener('ended', () => {
-  keepItTogether.play();
-});
+  justTheWayYouAre.play().catch((error) => {
+    console.log('Autoplay was prevented. Click anywhere to play the audio.');
+    document.body.addEventListener('click', () => {
+      justTheWayYouAre.play();
+    }, { once: true });
+  });
 
-keepItTogether.addEventListener('ended', () => {
-  justTheWayYouAre.play();
+  justTheWayYouAre.addEventListener('ended', () => {
+    keepItTogether.play();
+  });
+
+  keepItTogether.addEventListener('ended', () => {
+    justTheWayYouAre.play();
+  });
 });
